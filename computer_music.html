@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Music</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: lightgray;
+            font-size: 40px;
+            color: black;
+            font-family: monospace;
+            text-align: center;
+            margin: 0;
+            padding-top: .4%;
+            padding-bottom: .5%;
+        }
+
+        article {
+            margin: 0;
+            float: left;
+            width: 100%;
+            border: 2px solid black;
+            border-left-width: 1px;
+            border-right-width: 1px;
+        }
+
+        p {
+            background-color: white;
+            color: black;
+            font-size: 25px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: .25rem 0;
+            cursor: pointer;
+        }
+
+        .title {
+            border: 2px solid black;
+            background-color: lightgray;
+        }
+
+        .a {
+            text-decoration: unset;
+            color: unset;
+        }
+
+        svg {
+            margin: 0;
+            margin-bottom: -4px;
+        }
+
+        main {
+            display: flex;
+        }
+
+        #page1 {
+            color: unset
+        }
+
+        #page2 {
+            color: unset
+        }
+    </style>
+    <audio id="myAudio">
+        <source src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div id="page1">
+        <div class="title">
+            <h1><span>Computer Music</span>
+                <span style="float: right;cursor: pointer;" onclick="page2()">About Me</span></h1>
+        </div>
+        <svg width="100%" height="30">
+            <rect width="100%" height="30" style="fill:black;" />
+        </svg>
+        <main>
+            <article>
+                <p><b>Listen to Music</b></p>
+                <p onclick="audio('Star Warks Theme.mp3')">Star Wars Main Theme</p>
+                <p onclick="audio('SunCatcher 1.mp3')">Sun Catcher </p>
+                <p onclick="audio('Plaza de Toros.mp3')">Plaza de Toros</p>
+                <p onclick="audio('Rage Over A Lost Penny.mp3')">Rage Over a Lost Penny</p>
+                <p onclick="audio('Blue Danube Waltz.mp3')">Blue Danube Waltz</p>
+                <p onclick="audio('Over The Rainbow.mp3')">Over The Rainbow</p>
+                <p onclick="audio('America The Beautitful.mp3')">America The Beautiful</p>
+            </article>
+            <article>
+                <p><b>Download Music</b></p>
+                <p><a class="a" href="Star Warks Theme.mp3" download="Star Warks Theme" target="_blank">Star Wars Main
+                        Theme Song</a></p>
+                <p><a class="a" href="SunCatcher 1.mp3" download target="_blank">SunCatcher</a></p>
+                <p><a class="a" href="Plaza de Toros.mp3" download target="_blank">Plaza de Toros</a></p>
+                <p><a class="a" href="Rage Over A Lost Penny.mp3" download target="_blank">Rage Over A Lost Penny</a>
+                </p>
+                <p><a class="a" href="Blue Danube Waltz.mp3" download target="_blank">Blue Danube Waltz</a></p>
+                <p><a class="a" href="Over The Rainbow.mp3" download target="_blank">Over The Rainbow</a></p>
+                <p><a class="a" href="America The Beautitful.mp3" download target="_blank">America The Beautiful</a></p>
+            </article>
+        </main>
+    </div>
+    <div id="page2" hidden>
+        <div class="title">
+            <h1><span>About Me</span>
+                <span style="float: right;cursor: pointer;" onclick="page1()">Computer Music</span></h1>
+        </div>
+        <svg width="100%" height="30">
+            <rect width="100%" height="30" style="fill:black;" />
+        </svg>
+        <main>
+            <article>
+                <p style="text-align: center;"><b>About Me & Why I Did This Project</b></p>
+                <p style="font-size: 20PX;text-align:center;">I play the clarinet I have been for a year. I also play panio and this
+                    summer using python and after tweaking MusicalBeeps I start Producing the music. Then, I made this
+                    webpage to publish it this is where I realse finished songs and talk about the ones I'm working on.
+                </p>
+            </article>
+            <article>
+                <p style="text-align: center;"><b>New Pieces</b></p>
+                <p style="font-size: 20px;text-align: center;">Multipule Instrument In A Song 
+                Duets</p>
+            </article>
+            <article>
+                <p style="text-align: center;"><b>What I'm Working On Now</b></p>
+                <p style="font-size: 20px;text-align: center;">Prelude from Suite 1. <br>
+                And Then Probbaly Dance Of The Sugar Plum <br> Or A Multipule Instrument Duet</p>
+            </article>
+        </main>
+    </div>
+    <script>
+        playing = false;
+        function audio(song) {
+            var x = document.getElementById("myAudio");
+            if (!playing) {
+                x.setAttribute("src", song);
+                x.play();
+                playing = true
+            } else {
+                x.pause();
+                playing = false
+            }
+        }
+        function page1() {
+            document.getElementById("page2").setAttribute("hidden", true)
+            document.getElementById("page1").removeAttribute("hidden")
+            document.title="Music"
+        }
+        function page2() {
+            document.getElementById("page1").setAttribute("hidden", true)
+            document.getElementById("page2").removeAttribute("hidden")
+            document.title="About Me"
+        }
+        color1=0
+        postive1=true
+        function ColorChange(){
+            colors = [0,0,0].map(c => {
+                return Math.floor(Math.random()*256)
+            });
+            document.body.style.backgroundColor=`rgb(${colors[0]},${colors[1]},${colors[2]})`
+        }
+        setInterval(ColorChange,100)
+    </script>
+</body>
