@@ -31,3 +31,4 @@ jobs:
           repo: coolnicecool/computermusic
           # Git branch where assets will be deployed
           target_branch: gh-pages
+          build_dir: .
