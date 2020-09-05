@@ -155,12 +155,14 @@
     </div>
     <script>
         playing = false;
+        name=""
         function audio(song) {
             var x = document.getElementById("myAudio");
-            if (!playing) {
+            if (!playing || name !=song) {
                 x.setAttribute("src", song);
                 x.play();
                 playing = true
+                name=song
             } else {
                 x.pause();
                 playing = false
