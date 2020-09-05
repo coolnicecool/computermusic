@@ -22,13 +22,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: GitHub Pages
-        # You may pin to the exact commit or the version.
-        # uses: crazy-max/ghaction-github-pages@d3b77e62017a60cdf55ceffc6c263f1f357f4c1b
-        uses: crazy-max/ghaction-github-pages@v2.1.2
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@3.5.9
         with:
-         # GitHub repository where assets will be deployed (default current)
-          repo: coolnicecool/computermusic
-          # Git branch where assets will be deployed
-          target_branch: gh-pages
-          build_dir: .
+          GITHUB_TOKEN:  ${{ secrets.MY_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: . # The folder the action should deploy.
+
