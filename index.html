@@ -10,12 +10,20 @@
 
 <body>
     <style>
+        html{
+            height: 100%;
+        }
         body {
-            margin-top: 0px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
+            margin-top: 5%;
+            margin-bottom: auto;
+            margin-left: 10%;
+            margin-right: 10%;
             padding: 0;
+            background-image: linear-gradient(lightgray,white);
+            background-repeat:no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction:column
         }
 
         h1 {
@@ -37,10 +45,11 @@
             border: 2px solid black;
             border-left-width: 1px;
             border-right-width: 1px;
+            background-repeat:no-repeat;
+            background-size: cover;
         }
 
         p {
-            background-color: white;
             color: black;
             font-size: 25px;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -67,12 +76,8 @@
             display: flex;
         }
 
-        #page1 {
-            color: unset
-        }
-
-        #page2 {
-            color: unset
+        #page1, #page2 {
+            background-color: white;
         }
         .box{
             cursor: pointer;
@@ -90,6 +95,7 @@
         .left-pad p{
             margin-left: 1rem;
         }
+
     </style>
     <audio id="myAudio">
         <source src="" type="audio/mpeg">
