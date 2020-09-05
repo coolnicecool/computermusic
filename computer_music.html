@@ -162,14 +162,5 @@
             document.getElementById("page2").removeAttribute("hidden")
             document.title="About Me"
         }
-        color1=0
-        postive1=true
-        function ColorChange(){
-            colors = [0,0,0].map(c => {
-                return Math.floor(Math.random()*256)
-            });
-            document.body.style.backgroundColor=`rgb(${colors[0]},${colors[1]},${colors[2]})`
-        }
-        setInterval(ColorChange,100)
     </script>
 </body>
