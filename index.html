@@ -154,9 +154,12 @@
             <g>
                 <svg height="100%" width="100%">
                     <text x="45%" y="30" fill="white"
-                        style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; "
-                        onclick="hampage('2')">Computer Music</text>
+                        style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; ">Computer Music</text>
                 </svg>
+                <svg height="100%" width="100%">
+                    <text x="90%" y="31" fill="white"
+                        style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; ">Play All Songs</text>
+                </svg>                
             </g>
         </svg>
         <img src="eightnote.png" alt="eightnote" class="image2" onclick="hambuger()">
@@ -346,6 +349,8 @@
             document.getElementById(z).removeAttribute("hidden")
             document.getElementById("hambuger").setAttribute("hidden", true)
         }
-
+        function playall(){
+            music=["America The Beautitful.mp3","Blue Danube Waltz.mp3","Over The Rainbow.mp3","Plaza de Toros.mp3"]
+        }
     </script>
 </body>
