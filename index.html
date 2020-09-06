@@ -15,16 +15,20 @@
         }
 
         body {
-            margin-top: 5%;
-            margin-bottom: auto;
-            margin-left: 10%;
-            margin-right: 10%;
+            margin: 0;
             padding: 0;
             background-image: linear-gradient(white, lightgray);
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
             flex-direction: column
+        }
+
+        .body {
+            margin-top: 5%;
+            margin-bottom: auto;
+            margin-left: 10%;
+            margin-right: 10%;
         }
 
         h1 {
@@ -117,117 +121,186 @@
             text-align: center;
 
         }
+
+        .parent {
+            position: relative;
+        }
+
+        .image1 {
+            position: relative;
+        }
+
+        .image2 {
+            position: absolute;
+            top: 5px;
+            left: 30px;
+            height: 48px;
+        }
+
+        #hambuger {
+            color: unset
+        }
     </style>
     <audio id="myAudio">
         <source src="" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <div id="page1">
-        <div class="title">
-            <h1><span style="float:left;margin-left: 12px;" class="box" onclick="page('1','3')">Feedback</span>
-                <span style="flex:1;">Computer Music</span>
-                <span class="box" onclick="page('1','2')">About Me</span></h1>
-        </div>
-        <svg width="100%" height="30">
-            <rect width="100%" height="30" style="fill:black;" />
+    <svg width="100%" height="3">
+        <rect width="100%" height="3" style="fill:gray" />
+    </svg>
+    <div class="parent">
+        <svg width="100%" height="50" style="margin-top: 4px;" class="image1">
+            <rect width="100%" height="50" style="fill:black;" />
+            <g>
+                <svg height="100%" width="100%">
+                    <text x="45%" y="30" fill="white"
+                        style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; "
+                        onclick="hampage('2')">Computer Music</text>
+                </svg>
+            </g>
         </svg>
-        <main>
-            <article class="left-pad">
-                <p><b>Listen to Music</b></p>
-                <p onclick="audio('Star Warks Theme.mp3')">Star Wars Main Theme</p>
-                <p onclick="audio('SunCatcher 1.mp3')">Sun Catcher </p>
-                <p onclick="audio('Plaza de Toros.mp3')">Plaza de Toros</p>
-                <p onclick="audio('Rage Over A Lost Penny.mp3')">Rage Over a Lost Penny</p>
-                <p onclick="audio('Blue Danube Waltz.mp3')">Blue Danube Waltz</p>
-                <p onclick="audio('Over The Rainbow.mp3')">Over The Rainbow</p>
-                <p onclick="audio('America The Beautitful.mp3')">America The Beautiful</p>
-            </article>
-            <article class="left-pad">
-                <p><b>Download Music</b></p>
-                <p><a class="a" href="Star Warks Theme.mp3" download="Star Warks Theme" target="_blank">Star Wars Main
-                        Theme Song</a></p>
-                <p><a class="a" href="SunCatcher 1.mp3" download target="_blank">SunCatcher</a></p>
-                <p><a class="a" href="Plaza de Toros.mp3" download target="_blank">Plaza de Toros</a></p>
-                <p><a class="a" href="Rage Over A Lost Penny.mp3" download target="_blank">Rage Over A Lost Penny</a>
-                </p>
-                <p><a class="a" href="Blue Danube Waltz.mp3" download target="_blank">Blue Danube Waltz</a></p>
-                <p><a class="a" href="Over The Rainbow.mp3" download target="_blank">Over The Rainbow</a></p>
-                <p><a class="a" href="America The Beautitful.mp3" download target="_blank">America The Beautiful</a></p>
-            </article>
-        </main>
+        <img src="eightnote.png" alt="eightnote" class="image2" onclick="hambuger()">
     </div>
-    <div id="page2" hidden>
-        <div class="title">
-            <h1><span style="margin-left: 12px;" class="box" onclick="page('2','1')">Computer Music</span>
-                <span class="center">About Me</span>
-                <span class="box" onclick="page('2','3')">Feedback</span>
-            </h1>
+    <div class="parent" hidden id="hambuger">
+            <svg width="250" height="96">
+                <rect x="0" y="0" width="250" height="96" style="fill:rgba(128,128,128,.4);stroke:rgba(128,128,128,.4);stroke-width:5;" />
+                <g>
+                    <svg height="30" width="250">
+                        <text x="35" y="22" fill="black"
+                            style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer;"
+                            onclick="hampage('1')">Computer Music</text>
+                    </svg>
+                    <svg width="250" height="33" style="position: relative;">
+                        <rect x="0" y="30" width="250" height="3" style="fill:grey;" />
+                    </svg>
+                    <svg height="63" width="250">
+                        <text x="70" y="55" fill="black"
+                            style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; "
+                            onclick="hampage('2')">About Me</text>
+                    </svg>
+                    <svg width="250" height="69" style="position: relative;">
+                        <rect x="0" y="63" width="250" height="3" style="fill:grey; " />
+                    </svg>
+                    <svg height="96" width="250">
+                        <text x="70" y="88" fill="black"
+                            style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; "
+                            onclick="hampage('3')">Feedback</text>
+                    </svg>
+                </g>
+            </svg>
+    </div>
+    <div class="body">
+        <div id="page1">
+            <div class="title">
+                <h1><span style="float:left;margin-left: 12px;" class="box" onclick="page('1','3')">Feedback</span>
+                    <span style="flex:1;">Computer Music</span>
+                    <span class="box" onclick="page('1','2')">About Me</span></h1>
+            </div>
+            <svg width="100%" height="30">
+                <rect width="100%" height="30" style="fill:black;" />
+            </svg>
+            <main>
+                <article class="left-pad">
+                    <p><b>Listen to Music</b></p>
+                    <p onclick="audio('Star Warks Theme.mp3')">Star Wars Main Theme</p>
+                    <p onclick="audio('SunCatcher 1.mp3')">Sun Catcher </p>
+                    <p onclick="audio('Plaza de Toros.mp3')">Plaza de Toros</p>
+                    <p onclick="audio('Rage Over A Lost Penny.mp3')">Rage Over a Lost Penny</p>
+                    <p onclick="audio('Blue Danube Waltz.mp3')">Blue Danube Waltz</p>
+                    <p onclick="audio('Over The Rainbow.mp3')">Over The Rainbow</p>
+                    <p onclick="audio('America The Beautitful.mp3')">America The Beautiful</p>
+                </article>
+                <article class="left-pad">
+                    <p><b>Download Music</b></p>
+                    <p><a class="a" href="Star Warks Theme.mp3" download="Star Warks Theme" target="_blank">Star Wars
+                            Main
+                            Theme Song</a></p>
+                    <p><a class="a" href="SunCatcher 1.mp3" download target="_blank">SunCatcher</a></p>
+                    <p><a class="a" href="Plaza de Toros.mp3" download target="_blank">Plaza de Toros</a></p>
+                    <p><a class="a" href="Rage Over A Lost Penny.mp3" download target="_blank">Rage Over A Lost
+                            Penny</a>
+                    </p>
+                    <p><a class="a" href="Blue Danube Waltz.mp3" download target="_blank">Blue Danube Waltz</a></p>
+                    <p><a class="a" href="Over The Rainbow.mp3" download target="_blank">Over The Rainbow</a></p>
+                    <p><a class="a" href="America The Beautitful.mp3" download target="_blank">America The Beautiful</a>
+                    </p>
+                </article>
+            </main>
         </div>
-        <svg width="100%" height="30">
-            <rect width="100%" height="30" style="fill:black;" />
-        </svg>
-        <main style="margin-bottom:-8px ;">
-            <article class="left-pad">
-                <p style="text-align: center;"><b>About Me & Why I Did This Project</b></p>
-                <p style="font-size: 20PX;text-align:center;">I play the clarinet I have been for a year.
-                    <br> I also play piano and this summer using python and after tweaking Musical Beeps I start
-                    Producing the music. <br>
-                    Then, I made this webpage to publish it this is where I release finished songs and talk about the
-                    ones I'm working on.
-                </p>
-            </article>
-            <article class="left-pad">
-                <p style="text-align: center;"><b>New Pieces</b></p>
-                <p style="font-size: 20px;text-align: center;">Multipule Instrument In A Song
-                    Duets</p>
-            </article>
-            <article class="left-pad" >
-                <p style="text-align: center;"><b>What I'm Working On Now</b></p>
-                <p style="font-size: 20px;text-align: center;">Prelude from Suite 1. <br>
-                    And Then Probbaly Dance Of The Sugar Plum <br> Or A Multipule Instrument Duet</p>
-            </article>
-        </main>
-        <svg width="100%" height="10" style="margin-bottom: -4px;" >
-            <rect width="100%" height="10 " style="fill:black;" />
-        </svg>
-        <main>
-            <article>
-                <p class="heading"><b> Project's Code</b></p>
-                <p style="text-align: center;"><a class="a" href="https://python.org/download"
-                        target="_blank">Python</a></p>
-                <p style="text-align: center;"><a class="a" href="musicalbeeps.zip" download>Tweaked
-                        MusicalBeeps Libary</a></p>
-                <p style="text-align: center;"><a class="a" href="music2.py" download>Music Program</a>
+        <div id="page2" hidden>
+            <div class="title">
+                <h1><span style="margin-left: 12px;" class="box" onclick="page('2','1')">Computer Music</span>
+                    <span class="center">About Me</span>
+                    <span class="box" onclick="page('2','3')">Feedback</span>
+                </h1>
+            </div>
+            <svg width="100%" height="30">
+                <rect width="100%" height="30" style="fill:black;" />
+            </svg>
+            <main style="margin-bottom:-8px ;">
+                <article class="left-pad">
+                    <p style="text-align: center;"><b>About Me & Why I Did This Project</b></p>
+                    <p style="font-size: 20PX;text-align:center;">I play the clarinet I have been for a year.
+                        <br> I also play piano and this summer using python and after tweaking Musical Beeps I start
+                        Producing the music. <br>
+                        Then, I made this webpage to publish it this is where I release finished songs and talk about
+                        the
+                        ones I'm working on.
+                    </p>
+                </article>
+                <article class="left-pad">
+                    <p style="text-align: center;"><b>New Pieces</b></p>
+                    <p style="font-size: 20px;text-align: center;">Multipule Instrument In A Song
+                        Duets</p>
+                </article>
+                <article class="left-pad">
+                    <p style="text-align: center;"><b>What I'm Working On Now</b></p>
+                    <p style="font-size: 20px;text-align: center;">Prelude from Suite 1. <br>
+                        And Then Probbaly Dance Of The Sugar Plum <br> Or A Multipule Instrument Duet</p>
+                </article>
+            </main>
+            <svg width="100%" height="10" style="margin-bottom: -4px;">
+                <rect width="100%" height="10 " style="fill:black;" />
+            </svg>
+            <main>
+                <article>
+                    <p class="heading"><b> Project's Code</b></p>
+                    <p style="text-align: center;"><a class="a" href="https://python.org/download"
+                            target="_blank">Python</a></p>
+                    <p style="text-align: center;"><a class="a" href="musicalbeeps.zip" download>Tweaked
+                            MusicalBeeps Libary</a></p>
+                    <p style="text-align: center;"><a class="a" href="music2.py" download>Music Program</a>
                     <p style="text-align: center;"><a class="a" href="README.txt" download>How to use Music</a>
-                </p>
-            </article>
-        </main>
-    </div>
-    <div id="page3" hidden>
-        <div class="title">
-            <h1><span style="margin-left: 12px;" class="box" onclick="page('3','1')">Computer Music</span>
-                <span class="center">Feedback</span>
-                <span class="box" onclick="page('3','2')">About Me</span>
-            </h1>
+                    </p>
+                </article>
+            </main>
         </div>
-        <svg width="100%" height="30">
-            <rect width="100%" height="30" style="fill:black;" />
-        </svg>
-        <main>
-            <article>
-                <p style="text-align: center;font-size: 30px;margin-top: 0px;"><b><iframe width="99.75%" height="600"
-                            class="a"
-                            src="https://docs.google.com/forms/d/e/1FAIpQLSe0OfWsRrnOcwC0oidukquRmFnQQF8AhdDHN_wZGtcg7UOicw/viewform"
-                            target="_blank">Feedback</iframe></b></p>
-            </article>
-        </main>
+        <div id="page3" hidden>
+            <div class="title">
+                <h1><span style="margin-left: 12px;" class="box" onclick="page('3','1')">Computer Music</span>
+                    <span class="center">Feedback</span>
+                    <span class="box" onclick="page('3','2')">About Me</span>
+                </h1>
+            </div>
+            <svg width="100%" height="30">
+                <rect width="100%" height="30" style="fill:black;" />
+            </svg>
+            <main>
+                <article>
+                    <p style="text-align: center;font-size: 30px;margin-top: 0px;"><b><iframe width="99.75%"
+                                height="600" class="a"
+                                src="https://docs.google.com/forms/d/e/1FAIpQLSe0OfWsRrnOcwC0oidukquRmFnQQF8AhdDHN_wZGtcg7UOicw/viewform"
+                                target="_blank">Feedback</iframe></b></p>
+                </article>
+            </main>
+        </div>
     </div>
     <script>
         playing = false;
-        play=true
+        play = true
         name = ""
-        function wait(){
-            play=true
+        function wait() {
+            play = true
         }
         function audio(song) {
             var x = document.getElementById("myAudio");
@@ -236,10 +309,10 @@
                 x.play();
                 playing = true
                 name = song
-                play=false
-                start=setTimeout(wait,1000)
+                play = false
+                start = setTimeout(wait, 1000)
                 clearTimeout(start)
-                start=setTimeout(wait,1000)
+                start = setTimeout(wait, 1000)
             } else {
                 x.pause();
                 playing = false
@@ -252,5 +325,27 @@
             document.getElementById(hide).setAttribute("hidden", true)
             document.getElementById(show).removeAttribute("hidden")
         }
+        function hambuger() {
+            x = document.getElementById("hambuger").getAttribute("hidden")
+            if (x == null) {
+                document.getElementById("hambuger").setAttribute("hidden", true)
+            }
+            else {
+                document.getElementById("hambuger").removeAttribute("hidden")
+            }
+        }
+        function hampage(newpage) {
+            var i;
+            for (i = 1; i < 4; i++) {
+                z = "page"
+                z = z + String(i)
+                console.log(z)
+                document.getElementById(z).setAttribute("hidden", true)
+            }
+            z = "page" + newpage
+            document.getElementById(z).removeAttribute("hidden")
+            document.getElementById("hambuger").setAttribute("hidden", true)
+        }
+
     </script>
 </body>
