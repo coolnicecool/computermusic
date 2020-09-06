@@ -223,14 +223,22 @@
     </div>
     <script>
         playing = false;
+        play=true
         name = ""
+        function wait(){
+            play=true
+        }
         function audio(song) {
             var x = document.getElementById("myAudio");
-            if (!playing || name != song) {
+            if (!playing || name != song && play) {
                 x.setAttribute("src", song);
                 x.play();
                 playing = true
                 name = song
+                play=false
+                start=setTimeout(wait,1000)
+                clearTimeout(start)
+                start=setTimeout(wait,750)
             } else {
                 x.pause();
                 playing = false
