@@ -10,20 +10,21 @@
 
 <body>
     <style>
-        html{
+        html {
             height: 100%;
         }
+
         body {
             margin-top: 5%;
             margin-bottom: auto;
             margin-left: 10%;
             margin-right: 10%;
             padding: 0;
-            background-image: linear-gradient(white,lightgray);
-            background-repeat:no-repeat;
+            background-image: linear-gradient(white, lightgray);
+            background-repeat: no-repeat;
             background-size: cover;
             display: flex;
-            flex-direction:column
+            flex-direction: column
         }
 
         h1 {
@@ -45,9 +46,9 @@
             border: 2px solid black;
             border-left-width: 1px;
             border-right-width: 1px;
-            background-repeat:no-repeat;
+            background-repeat: no-repeat;
             background-size: cover;
-            background-color:#e8e8e8;
+            background-color: #e8e8e8;
         }
 
         p {
@@ -56,7 +57,7 @@
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             margin: .25rem 0;
             cursor: pointer;
-            
+
         }
 
         .title {
@@ -78,26 +79,36 @@
             display: flex;
         }
 
-        #page1, #page2 {
+        #page1,
+        #page2,
+        #page3 {
             background-color: white;
         }
-        .box{
+
+        form {
+            color: black;
+            font-size: 25px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: .25rem 0;
+        }
+
+        .box {
             cursor: pointer;
             border: 2px solid black;
             margin-right: 12px;
             border-radius: 12px;
-            background-color:#e8e8e8;
+            background-color: #e8e8e8;
             padding: 0 .25rem;
         }
-        .center{
-            flex:1;
-            margin:auto;
-            margin-right: -320px;
-        }
-        .left-pad p{
-            margin-left: 1rem;
+
+        .center {
+            flex: 1;
+            margin-right: 115px;
         }
 
+        .left-pad p {
+            margin-left: 1rem;
+        }
     </style>
     <audio id="myAudio">
         <source src="" type="audio/mpeg">
@@ -105,8 +116,9 @@
     </audio>
     <div id="page1">
         <div class="title">
-            <h1><span style="flex:1;">Computer Music</span>
-                <span class="box" onclick="page2()">About Me</span></h1>
+            <h1><span style="float:left;margin-left: 12px;" class="box" onclick="page('1','3')">Feedback</span>
+                <span style="flex:1;">Computer Music</span>
+                <span class="box" onclick="page('1','2')">About Me</span></h1>
         </div>
         <svg width="100%" height="30">
             <rect width="100%" height="30" style="fill:black;" />
@@ -138,8 +150,10 @@
     </div>
     <div id="page2" hidden>
         <div class="title">
-            <h1><span class="center">About Me</span>
-                <span class="box" onclick="page1()">Computer Music</span></h1>
+            <h1><span style="margin-left: 12px;" class="box" onclick="page('2','1')">Computer Music</span>
+                <span class="center">About Me</span>
+                <span class="box" onclick="page('2','3')">Feedback</span>
+            </h1>
         </div>
         <svg width="100%" height="30">
             <rect width="100%" height="30" style="fill:black;" />
@@ -147,47 +161,61 @@
         <main>
             <article class="left-pad">
                 <p style="text-align: center;"><b>About Me & Why I Did This Project</b></p>
-                <p style="font-size: 20PX;text-align:center;">I play the clarinet I have been for a year. I also play panio and this
+                <p style="font-size: 20PX;text-align:center;">I play the clarinet I have been for a year. I also play
+                    panio and this
                     summer using python and after tweaking MusicalBeeps I start Producing the music. Then, I made this
                     webpage to publish it this is where I realse finished songs and talk about the ones I'm working on.
                 </p>
             </article>
             <article class="left-pad">
                 <p style="text-align: center;"><b>New Pieces</b></p>
-                <p style="font-size: 20px;text-align: center;">Multipule Instrument In A Song 
-                Duets</p>
+                <p style="font-size: 20px;text-align: center;">Multipule Instrument In A Song
+                    Duets</p>
             </article>
             <article class="left-pad">
                 <p style="text-align: center;"><b>What I'm Working On Now</b></p>
                 <p style="font-size: 20px;text-align: center;">Prelude from Suite 1. <br>
-                And Then Probbaly Dance Of The Sugar Plum <br> Or A Multipule Instrument Duet</p>
+                    And Then Probbaly Dance Of The Sugar Plum <br> Or A Multipule Instrument Duet</p>
             </article>
         </main>
     </div>
+    <div id="page3" hidden>
+        <div class="title">
+            <h1><span style="margin-left: 12px;" class="box" onclick="page('3','1')">Computer Music</span>
+                <span class="center">Feedback</span>
+                <span class="box" onclick="page('3','2')">About Me</span>
+            </h1>
+            <main>
+                <article>
+                    <p style="text-align: center;"><b><a class="a" href="https://docs.google.com/forms/d/e/1FAIpQLSe0OfWsRrnOcwC0oidukquRmFnQQF8AhdDHN_wZGtcg7UOicw/viewform" target="_blank">Feedback</a></b></p>  
+                </article>
+            </main>
+        </div>
+        <svg width="100%" height="30">
+            <rect width="100%" height="30" style="fill:black;" />
+        </svg>
+    </div>
     <script>
         playing = false;
-        name=""
+        name = ""
         function audio(song) {
             var x = document.getElementById("myAudio");
-            if (!playing || name !=song) {
+            if (!playing || name != song) {
                 x.setAttribute("src", song);
                 x.play();
                 playing = true
-                name=song
+                name = song
             } else {
                 x.pause();
                 playing = false
             }
         }
-        function page1() {
-            document.getElementById("page2").setAttribute("hidden", true)
-            document.getElementById("page1").removeAttribute("hidden")
-            document.title="Music"
-        }
-        function page2() {
-            document.getElementById("page1").setAttribute("hidden", true)
-            document.getElementById("page2").removeAttribute("hidden")
-            document.title="About Me"
+        function page(hide, show) {
+            hide = "page" + hide
+            show = "page" + show
+            console.log(show)
+            document.getElementById(hide).setAttribute("hidden", true)
+            document.getElementById(show).removeAttribute("hidden")
         }
     </script>
 </body>
