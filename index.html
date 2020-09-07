@@ -17,11 +17,12 @@
         body {
             margin: 0;
             padding: 0;
+
             background-image: linear-gradient(white, lightgray);
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
-            flex-direction: column
+            flex-direction: column;          
         }
 
         .body {
@@ -144,6 +145,9 @@
     <audio id="myAudio">
         <source src="" type="audio/mpeg">
         Your browser does not support the audio element.
+        <script>
+            playing = false
+        </script>
     </audio>
     <svg width="100%" height="3">
         <rect width="100%" height="3" style="fill:gray" />
@@ -154,40 +158,46 @@
             <g>
                 <svg height="100%" width="100%">
                     <text x="45%" y="30" fill="white"
+                        style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; ">Computer
+                        Music</text>
+                </svg>
+                <svg height="100%" width="100%">
+                    <text x="90%" y="31" fill="white"
                         style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; "
-                        onclick="hampage('2')">Computer Music</text>
+                        onclick="playall()">Play All Songs</text>
                 </svg>
             </g>
         </svg>
         <img src="eightnote.png" alt="eightnote" class="image2" onclick="hambuger()">
     </div>
     <div class="parent" hidden id="hambuger">
-            <svg width="250" height="96">
-                <rect x="0" y="0" width="250" height="96" style="fill:rgba(128,128,128,.4);stroke:rgba(128,128,128,.4);stroke-width:5;" />
-                <g>
-                    <svg height="30" width="250">
-                        <text x="35" y="22" fill="black"
-                            style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer;"
-                            onclick="hampage('1')">Computer Music</text>
-                    </svg>
-                    <svg width="250" height="33" style="position: relative;">
-                        <rect x="0" y="30" width="250" height="3" style="fill:grey;" />
-                    </svg>
-                    <svg height="63" width="250">
-                        <text x="70" y="55" fill="black"
-                            style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; "
-                            onclick="hampage('2')">About Me</text>
-                    </svg>
-                    <svg width="250" height="69" style="position: relative;">
-                        <rect x="0" y="63" width="250" height="3" style="fill:grey; " />
-                    </svg>
-                    <svg height="96" width="250">
-                        <text x="70" y="88" fill="black"
-                            style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; "
-                            onclick="hampage('3')">Feedback</text>
-                    </svg>
-                </g>
-            </svg>
+        <svg width="250" height="96">
+            <rect x="0" y="0" width="250" height="96"
+                style="fill:rgba(128,128,128,.4);stroke:rgba(128,128,128,.4);stroke-width:5;" />
+            <g>
+                <svg height="30" width="250">
+                    <text x="35" y="22" fill="black"
+                        style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer;"
+                        onclick="hampage('1')">Computer Music</text>
+                </svg>
+                <svg width="250" height="33" style="position: relative;">
+                    <rect x="0" y="30" width="250" height="3" style="fill:grey;" />
+                </svg>
+                <svg height="63" width="250">
+                    <text x="70" y="55" fill="black"
+                        style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; "
+                        onclick="hampage('2')">About Me</text>
+                </svg>
+                <svg width="250" height="69" style="position: relative;">
+                    <rect x="0" y="63" width="250" height="3" style="fill:grey; " />
+                </svg>
+                <svg height="96" width="250">
+                    <text x="70" y="88" fill="black"
+                        style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; "
+                        onclick="hampage('3')">Feedback</text>
+                </svg>
+            </g>
+        </svg>
     </div>
     <div class="body">
         <div id="page1">
@@ -346,6 +356,18 @@
             document.getElementById(z).removeAttribute("hidden")
             document.getElementById("hambuger").setAttribute("hidden", true)
         }
+        function playall() {
+            e = "ready"
+            var music = ["America The Beautitful.mp3", "Blue Danube Waltz.mp3", "Over The Rainbow.mp3", "Plaza de Toros.mp3", "Rage Over A Lost Penny.mp3", "Star Warks Theme.mp3", "SunCatcher 1.mp3"];
+            while (music.length > 0) {
+                while (e != "[object Promise]") {
+                    e = new Audio(music[0]).play()
+                    
+                    e = String(e)
+                    music.shift()
 
+                }
+            }
+        }
     </script>
 </body>
