@@ -132,14 +132,25 @@
         }
 
         .image2 {
-            position: absolute;
-            top: 5px;
-            left: 30px;
             height: 48px;
         }
 
         #hambuger {
             color: unset
+        }
+        nav{
+            border-top: 4px solid gray;
+            height:50px;
+            width:100%;
+            background-color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color:white;
+            padding: 0 2rem;
+            font-size: 24px;
+            font-weight: 999;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
     </style>
     <audio id="myAudio">
@@ -152,24 +163,11 @@
     <svg width="100%" height="3">
         <rect width="100%" height="3" style="fill:gray" />
     </svg>
-    <div class="parent">
-        <svg width="100%" height="50" style="margin-top: 4px;" class="image1">
-            <rect width="100%" height="50" style="fill:black;" />
-            <g>
-                <svg height="100%" width="100%">
-                    <text x="45%" y="30" fill="white"
-                        style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; ">Computer
-                        Music</text>
-                </svg>
-                <svg height="100%" width="100%">
-                    <text x="90%" y="31" fill="white"
-                        style="font-family: 'Lucida Sans';font-weight:bold;font-size:20px;cursor: pointer; "
-                        onclick="playall()">Play All Songs</text>
-                </svg>
-            </g>
-        </svg>
+    <nav class="parent">
         <img src="eightnote.png" alt="eightnote" class="image2" onclick="hambuger()">
-    </div>
+        <div>Computer Music</div>
+        <div style="padding-right: 3rem;cursor: pointer;" onclick="playall()"> Play all</div>  
+    </nav>
     <div class="parent" hidden id="hambuger">
         <svg width="250" height="96">
             <rect x="0" y="0" width="250" height="96"
@@ -309,6 +307,9 @@
         playing = false;
         play = true
         name = ""
+        music = ["America The Beautitful.mp3", "Blue Danube Waltz.mp3", "Over The Rainbow.mp3", "Plaza de Toros.mp3", "Rage Over A Lost Penny.mp3", "Star Warks Theme.mp3", "SunCatcher 1.mp3"];
+        playerHandle = null;
+        songIndex = 0;
         function wait() {
             play = true
         }
@@ -317,7 +318,7 @@
             if (!playing || name != song && play) {
                 x.setAttribute("src", song);
                 x.play();
-                playing = true
+                playing = true  
                 name = song
                 play = false
                 start = setTimeout(wait, 1000)
@@ -356,17 +357,34 @@
             document.getElementById(z).removeAttribute("hidden")
             document.getElementById("hambuger").setAttribute("hidden", true)
         }
-        function playall() {
-            e = "ready"
-            var music = ["America The Beautitful.mp3", "Blue Danube Waltz.mp3", "Over The Rainbow.mp3", "Plaza de Toros.mp3", "Rage Over A Lost Penny.mp3", "Star Warks Theme.mp3", "SunCatcher 1.mp3"];
-            while (music.length > 0) {
-                while (e != "[object Promise]") {
-                    e = new Audio(music[0]).play()
-                    
-                    e = String(e)
-                    music.shift()
-
+        function ticker(){
+            var audio = document.getElementById("myAudio");
+            if(!playing || audio.ended){
+                clearInterval(playerHandle);
+                if(audio.ended){
+                    songIndex++;
+                    if(songIndex<music.length){
+                        playSong(music[songIndex])
+                    } else {
+                        songIndex = 0
+                        playSong(music[songIndex])
+                    }
+                } else {
+                    audio.pause()
                 }
+            }
+        }
+        function playSong(name){
+            var audio = document.getElementById("myAudio");
+            audio.setAttribute("src", name);
+            audio.play();
+        }
+        function playall() {
+            playing = !playing
+            playerHandle = setInterval(ticker, 100);
+            if(playing){
+                songIndex = 0
+                playSong(music[songIndex])
             }
         }
     </script>
