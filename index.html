@@ -198,7 +198,7 @@
                 background-color: transparent;
             }
         }
-        @media screen and (max-width: 299px){
+        @media screen and (max-width: 349px){
             body * {
                 visibility: hidden;
             }
@@ -213,6 +213,18 @@
                 font-family: monospace;
             }
         }
+        .play-all{
+            padding-right: 3rem;
+            cursor: pointer;
+        }
+        @media screen and (max-width: 400px) {
+            nav {
+                padding: 0  ;
+            }
+            .play-all{
+                padding: 0;
+            }
+        }
     </style>
     <audio id="myAudio">
         <source src="" type="audio/mpeg">
@@ -221,14 +233,15 @@
             playing = false
         </script>
     </audio>
-    <div class="too-narrow">Display Too Small</div>
+    <div class="too-narrow">Screen Display <br> Is To Small</div>
+    <div class="too-narrow" onclick="playall()">Play All songs</div>
     <svg width="100%" height="3">
         <rect width="100%" height="3" style="fill:gray" />
     </svg>
     <nav class="parent">
         <img src="eightnote.png" alt="eightnote" class="image2" onclick="hambuger()">
         <div>Computer Music</div>
-        <div style="padding-right: 3rem;cursor: pointer;" onclick="playall()"> Play all</div>
+        <div class="play-all" onclick="playall()"> Play all</div>
     </nav>
     <div class="parent" hidden id="hambuger">
         <svg width="250" height="96">
