@@ -17,16 +17,17 @@
         body {
             margin: 0;
             padding: 0;
-
-            background-image: linear-gradient(white, lightgray);
+            background-color: white;
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
             flex-direction: column;
+            background-position-y: 50px;
+
         }
 
         .body {
-            margin-top: 5%;
+            margin-top: 0;
             margin-bottom: auto;
             margin-left: 10%;
             margin-right: 10%;
@@ -153,6 +154,65 @@
             font-weight: 999;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
+
+        .rect1 {
+            margin: 0;
+            width: 100%;
+            height: 30px;
+            background-color: transparent;
+        }
+        /*.rect2 {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: url("bottom_clip_art.jpg");
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }*/
+
+        .wide{
+            display: block;
+            display: flex;
+                justify-content: space-between;
+            }
+        .narrow, .too-narrow{
+            display: none;
+        }
+
+        @media screen and (max-width:650px) {
+            /* #right {
+                background-image: url("left_arrow.png");
+                height: 20px;
+                width: 20px;
+            } */
+            .wide{
+                display: none;
+            }
+            .narrow{
+                display: flex;
+                justify-content: space-between;
+            }
+            h1 .box{
+                border: none;
+                background-color: transparent;
+            }
+        }
+        @media screen and (max-width: 299px){
+            body * {
+                visibility: hidden;
+            }
+            .too-narrow{
+                display: block;
+                visibility:visible; 
+                font-size: 24px;
+                color: black;
+                top: 1rem;
+                position: relative;
+                text-align: center;
+                font-family: monospace;
+            }
+        }
     </style>
     <audio id="myAudio">
         <source src="" type="audio/mpeg">
@@ -161,6 +221,7 @@
             playing = false
         </script>
     </audio>
+    <div class="too-narrow">Display Too Small</div>
     <svg width="100%" height="3">
         <rect width="100%" height="3" style="fill:gray" />
     </svg>
@@ -198,12 +259,19 @@
             </g>
         </svg>
     </div>
+
     <div class="body">
+        
+        <div class="rect1"></div>
         <div id="page1">
             <div class="title">
-                <h1><span style="float:left;margin-left: 12px;" class="box" onclick="page('1','3')">Feedback</span>
+                <h1 class="wide"><span id="right"  class="box" style="margin-left: 12px;"
+                        onclick="page('1','3')">Feedback</span>
                     <span style="flex:1;">Computer Music</span>
                     <span class="box" onclick="page('1','2')">About Me</span></h1>
+                <h1 class="narrow"><span id="right" class="box"
+                        onclick="page('1','3')"><img src="left_arrow.png" alt="" height="50" width="50"></span>
+                    <span class="box" onclick="page('1','2')"><img src="right_arrow.png" alt="" height="50" width="50"></span></h1>
             </div>
             <svg width="100%" height="30">
                 <rect width="100%" height="30" style="fill:black;" />
@@ -238,10 +306,13 @@
         </div>
         <div id="page2" hidden>
             <div class="title">
-                <h1><span style="margin-left: 12px;" class="box" onclick="page('2','1')">Computer Music</span>
+                <h1 class="wide"><span style="margin-left: 12px;" class="box" onclick="page('2','1')">Computer Music</span>
                     <span class="center">About Me</span>
                     <span class="box" onclick="page('2','3')">Feedback</span>
                 </h1>
+                <h1 class="narrow"><span id="right" class="box"
+                    onclick="page('2','1')"><img src="left_arrow.png" alt="" height="50" width="50"></span>
+                <span class="box" onclick="page('2','3')"><img src="right_arrow.png" alt="" height="50" width="50"></span></h1>
             </div>
             <svg width="100%" height="30">
                 <rect width="100%" height="30" style="fill:black;" />
@@ -286,10 +357,13 @@
         </div>
         <div id="page3" hidden>
             <div class="title">
-                <h1><span style="margin-left: 12px;" class="box" onclick="page('3','1')">Computer Music</span>
+                <h1 class="wide"><span style="margin-left: 12px;" class="box" onclick="page('3','1')">Computer Music</span>
                     <span class="center">Feedback</span>
                     <span class="box" onclick="page('3','2')">About Me</span>
                 </h1>
+                <h1 class="narrow"><span id="right" class="box"
+                    onclick="page('3','1')"><img src="left_arrow.png" alt="" height="50" width="50"></span>
+                <span class="box" onclick="page('3','2')"><img src="right_arrow.png" alt="" height="50" width="50"></span></h1>
             </div>
             <svg width="100%" height="30">
                 <rect width="100%" height="30" style="fill:black;" />
@@ -303,7 +377,9 @@
                 </article>
             </main>
         </div>
+        <div class="rect2"></div>
     </div>
+    
     <script>
         playing = false;
         play = true
@@ -322,6 +398,7 @@
                 playing = true
                 name = song
                 play = false
+                clearInterval(playerHandle);
                 start = setTimeout(wait, 1000)
                 clearTimeout(start)
                 start = setTimeout(wait, 1000)
@@ -385,9 +462,10 @@
             audio.play();
         }
         function playall() {
-            if (!playing) {
-                playing = !playing
+            if (playing) {
+                clearInterval(playerHandle); 
             }
+            playing= !playing
             playerHandle = setInterval(ticker, 100);
             if (playing) {
                 songIndex = 0
