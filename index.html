@@ -161,6 +161,7 @@
             height: 30px;
             background-color: transparent;
         }
+
         /*.rect2 {
             margin: 0;
             width: 100%;
@@ -171,40 +172,47 @@
 
         }*/
 
-        .wide{
+        .wide {
             display: block;
             display: flex;
-                justify-content: space-between;
-            }
-        .narrow, .too-narrow{
+            justify-content: space-between;
+        }
+
+        .narrow,
+        .too-narrow {
             display: none;
         }
 
         @media screen and (max-width:650px) {
+
             /* #right {
                 background-image: url("left_arrow.png");
                 height: 20px;
                 width: 20px;
             } */
-            .wide{
+            .wide {
                 display: none;
             }
-            .narrow{
+
+            .narrow {
                 display: flex;
                 justify-content: space-between;
             }
-            h1 .box{
+
+            h1 .box {
                 border: none;
                 background-color: transparent;
             }
         }
-        @media screen and (max-width: 349px){
+
+        @media screen and (max-width: 349px) {
             body * {
                 visibility: hidden;
             }
-            .too-narrow{
+
+            .too-narrow {
                 display: block;
-                visibility:visible; 
+                visibility: visible;
                 font-size: 24px;
                 color: black;
                 top: 1rem;
@@ -213,15 +221,18 @@
                 font-family: monospace;
             }
         }
-        .play-all{
+
+        .play-all {
             padding-right: 3rem;
             cursor: pointer;
         }
+
         @media screen and (max-width: 400px) {
             nav {
-                padding: 0  ;
+                padding: 0;
             }
-            .play-all{
+
+            .play-all {
                 padding: 0;
             }
         }
@@ -234,14 +245,20 @@
         </script>
     </audio>
     <div class="too-narrow">Screen Display <br> Is To Small</div>
-    <div class="too-narrow" onclick="playall()">Play All songs</div>
+    <div class="too-narrow" onclick="playall()" style="cursor: pointer;">Play All songs</div>
     <svg width="100%" height="3">
         <rect width="100%" height="3" style="fill:gray" />
     </svg>
-    <nav class="parent">
-        <img src="eightnote.png" alt="eightnote" class="image2" onclick="hambuger()">
-        <div>Computer Music</div>
-        <div class="play-all" onclick="playall()"> Play all</div>
+
+    <nav>
+        
+        <nav class="parent" style="border-top: none;">
+            <img src="eightnote.png" alt="eightnote" class="image2" onclick="hambuger()">
+            <img style="display: block; cursor: pointer;" onclick="github()" src="80's circle-formated.png" height="48px"   alt="Github">
+            <div>Computer Music</div>
+            <div>Try it</div>
+            <div class="play-all" onclick="playall()"> Play all</div>
+        </nav>
     </nav>
     <div class="parent" hidden id="hambuger">
         <svg width="250" height="96">
@@ -274,17 +291,18 @@
     </div>
 
     <div class="body">
-        
+
         <div class="rect1"></div>
         <div id="page1">
             <div class="title">
-                <h1 class="wide"><span id="right"  class="box" style="margin-left: 12px;"
+                <h1 class="wide"><span id="right" class="box" style="margin-left: 12px;"
                         onclick="page('1','3')">Feedback</span>
                     <span style="flex:1;">Computer Music</span>
                     <span class="box" onclick="page('1','2')">About Me</span></h1>
-                <h1 class="narrow"><span id="right" class="box"
-                        onclick="page('1','3')"><img src="left_arrow.png" alt="" height="50" width="50"></span>
-                    <span class="box" onclick="page('1','2')"><img src="right_arrow.png" alt="" height="50" width="50"></span></h1>
+                <h1 class="narrow"><span id="right" class="box" onclick="page('1','3')"><img src="left_arrow.png" alt=""
+                            height="50" width="50"></span>
+                    <span class="box" onclick="page('1','2')"><img src="right_arrow.png" alt="" height="50"
+                            width="50"></span></h1>
             </div>
             <svg width="100%" height="30">
                 <rect width="100%" height="30" style="fill:black;" />
@@ -319,13 +337,15 @@
         </div>
         <div id="page2" hidden>
             <div class="title">
-                <h1 class="wide"><span style="margin-left: 12px;" class="box" onclick="page('2','1')">Computer Music</span>
+                <h1 class="wide"><span style="margin-left: 12px;" class="box" onclick="page('2','1')">Computer
+                        Music</span>
                     <span class="center">About Me</span>
                     <span class="box" onclick="page('2','3')">Feedback</span>
                 </h1>
-                <h1 class="narrow"><span id="right" class="box"
-                    onclick="page('2','1')"><img src="left_arrow.png" alt="" height="50" width="50"></span>
-                <span class="box" onclick="page('2','3')"><img src="right_arrow.png" alt="" height="50" width="50"></span></h1>
+                <h1 class="narrow"><span id="right" class="box" onclick="page('2','1')"><img src="left_arrow.png" alt=""
+                            height="50" width="50"></span>
+                    <span class="box" onclick="page('2','3')"><img src="right_arrow.png" alt="" height="50"
+                            width="50"></span></h1>
             </div>
             <svg width="100%" height="30">
                 <rect width="100%" height="30" style="fill:black;" />
@@ -370,13 +390,15 @@
         </div>
         <div id="page3" hidden>
             <div class="title">
-                <h1 class="wide"><span style="margin-left: 12px;" class="box" onclick="page('3','1')">Computer Music</span>
+                <h1 class="wide"><span style="margin-left: 12px;" class="box" onclick="page('3','1')">Computer
+                        Music</span>
                     <span class="center">Feedback</span>
                     <span class="box" onclick="page('3','2')">About Me</span>
                 </h1>
-                <h1 class="narrow"><span id="right" class="box"
-                    onclick="page('3','1')"><img src="left_arrow.png" alt="" height="50" width="50"></span>
-                <span class="box" onclick="page('3','2')"><img src="right_arrow.png" alt="" height="50" width="50"></span></h1>
+                <h1 class="narrow"><span id="right" class="box" onclick="page('3','1')"><img src="left_arrow.png" alt=""
+                            height="50" width="50"></span>
+                    <span class="box" onclick="page('3','2')"><img src="right_arrow.png" alt="" height="50"
+                            width="50"></span></h1>
             </div>
             <svg width="100%" height="30">
                 <rect width="100%" height="30" style="fill:black;" />
@@ -392,7 +414,7 @@
         </div>
         <div class="rect2"></div>
     </div>
-    
+
     <script>
         playing = false;
         play = true
@@ -423,7 +445,6 @@
         function page(hide, show) {
             hide = "page" + hide
             show = "page" + show
-            console.log(show)
             document.getElementById(hide).setAttribute("hidden", true)
             document.getElementById(show).removeAttribute("hidden")
         }
@@ -476,14 +497,17 @@
         }
         function playall() {
             if (playing) {
-                clearInterval(playerHandle); 
+                clearInterval(playerHandle);
             }
-            playing= !playing
+            playing = !playing
             playerHandle = setInterval(ticker, 100);
             if (playing) {
                 songIndex = 0
                 playSong(music[songIndex])
             }
+        }
+        function github(){
+            window.open("https://github.com/coolnicecool")
         }
     </script>
 </body>
